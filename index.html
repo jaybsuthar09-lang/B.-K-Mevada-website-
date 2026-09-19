@@ -141,5 +141,26 @@ address{font-style:normal;margin:0 0 18px;line-height:1.5}
   </section>
 </main>
 <p class="foot">Professional woodworking machinery. Since 1985.</p>
+  <script>
+document.querySelectorAll(".wall a").forEach(link => {
+  link.addEventListener("click", function(e) {
+    
+    // get machine name from UI (already exists)
+    let name = this.querySelector(".nm")?.innerText || "Machine";
+
+    let message = `Hello, I saw your machine at Mumbai Wood 2026.
+
+Machine: ${name}
+
+Please share full details, price and demo.`;
+
+    let phone = "919825137814";
+    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+
+    // open WhatsApp
+    window.open(url, "_blank");
+  });
+});
+</script>
 </body>
 </html>
