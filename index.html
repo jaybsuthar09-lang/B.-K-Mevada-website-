@@ -55,6 +55,30 @@ body{margin:0;font-family:Arial}
   margin-top:8px;
   font-weight:bold;
 }
+
+/* QUOTATION SECTION */
+.quote-box{
+  padding:25px;
+  text-align:center;
+  background:#f8f8f8;
+  border-top:2px solid #ccc;
+}
+
+.quote-box select{
+  padding:10px;
+  width:260px;
+  margin-bottom:10px;
+}
+
+.quote-box button{
+  padding:12px 22px;
+  background:#25D366;
+  color:white;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+  border-radius:5px;
+}
 </style>
 </head>
 
@@ -75,42 +99,42 @@ body{margin:0;font-family:Arial}
 <ul class="wall">
 
 <li>
-  <a href="#machine1">
+  <a href="#">
     <span class="ph"><img src="images/panelsaw.jpg"></span>
     <span class="nm">Panel Saw Machine</span>
   </a>
 </li>
 
 <li>
-  <a href="#machine2">
+  <a href="#">
     <span class="ph"><img src="images/edgebander.jpg"></span>
     <span class="nm">Edge Bander Machine</span>
   </a>
 </li>
 
 <li>
-  <a href="#machine3">
+  <a href="#">
     <span class="ph"><img src="images/cnc.jpg"></span>
     <span class="nm">CNC Router Machine</span>
   </a>
 </li>
 
 <li>
-  <a href="#machine4">
+  <a href="#">
     <span class="ph"><img src="images/press.jpg"></span>
     <span class="nm">Cold Press Machine</span>
   </a>
 </li>
 
 <li>
-  <a href="#machine5">
+  <a href="#">
     <span class="ph"><img src="images/planner.jpg"></span>
     <span class="nm">Planner Machine</span>
   </a>
 </li>
 
 <li>
-  <a href="#machine6">
+  <a href="#">
     <span class="ph"><img src="images/mortiser.jpg"></span>
     <span class="nm">Mortiser Machine</span>
   </a>
@@ -118,7 +142,7 @@ body{margin:0;font-family:Arial}
 
 </ul>
 
-<!-- EXISTING WHATSAPP CLICK SCRIPT -->
+<!-- PRODUCT CLICK → WHATSAPP -->
 <script>
 document.querySelectorAll(".wall a").forEach(link => {
   link.addEventListener("click", function(e) {
@@ -127,7 +151,7 @@ document.querySelectorAll(".wall a").forEach(link => {
 
     let name = this.querySelector(".nm")?.innerText || "Machine";
 
-    let message = `Hello, I saw your machine at Mumbai Wood 2026.
+    let message = `Hello, I visited your stall at Mumbai Wood 2026.
 
 Machine: ${name}
 
@@ -141,53 +165,53 @@ Please share full details, price and demo.`;
 });
 </script>
 
-<!-- 🔽 NEW DROPDOWN QUOTATION SECTION (ADDED ONLY) -->
-<div style="padding:20px;text-align:center;background:#f8f8f8;border-top:2px solid #ccc">
+<!-- QUOTATION SECTION -->
+<div class="quote-box">
 
   <h3>Request a Quotation</h3>
 
-  <select id="machineSelect" style="padding:10px;width:250px;margin-bottom:10px">
+  <select id="machineSelect">
     <option value="">Select Machine</option>
 
-    <option value="Panel Saw Machine - PS-100">Panel Saw Machine (PS-100)</option>
-    <option value="Edge Bander Machine - EB-200">Edge Bander Machine (EB-200)</option>
-    <option value="CNC Router Machine - CNC-500">CNC Router Machine (CNC-500)</option>
-    <option value="Cold Press Machine - CP-300">Cold Press Machine (CP-300)</option>
-    <option value="Planner Machine - PL-150">Planner Machine (PL-150)</option>
-    <option value="Mortiser Machine - MT-250">Mortiser Machine (MT-250)</option>
+    <option value="Panel Saw Machine (PS-100)">Panel Saw Machine (PS-100)</option>
+    <option value="Edge Bander Machine (EB-200)">Edge Bander Machine (EB-200)</option>
+    <option value="CNC Router Machine (CNC-500)">CNC Router Machine (CNC-500)</option>
+    <option value="Cold Press Machine (CP-300)">Cold Press Machine (CP-300)</option>
+    <option value="Planner Machine (PL-150)">Planner Machine (PL-150)</option>
+    <option value="Mortiser Machine (MT-250)">Mortiser Machine (MT-250)</option>
 
   </select>
 
   <br>
 
-  <button onclick="sendWhatsApp()" style="
-    padding:12px 20px;
-    background:#25D366;
-    color:white;
-    border:none;
-    cursor:pointer;
-    font-weight:bold;
-  ">
+  <button onclick="sendWhatsApp()">
     Get Quotation on WhatsApp
   </button>
 
 </div>
 
-<!-- NEW SCRIPT FOR DROPDOWN -->
+<!-- DROPDOWN → WHATSAPP -->
 <script>
 function sendWhatsApp() {
-  let selected = document.getElementById("machineSelect").value;
 
-  if (!selected) {
+  let selectedMachine = document.getElementById("machineSelect").value;
+
+  if (selectedMachine === "") {
     alert("Please select a machine first");
     return;
   }
 
-  let message = `Hello, I would like to get a quotation for:
+  let message = `Hello, I visited your stall at Mumbai Wood 2026.
 
-${selected}
+I would like a quotation for:
 
-Please share price, specifications and availability.`;
+${selectedMachine}
+
+Please share:
+• Price
+• Full specifications
+• Demo availability
+• Delivery time`;
 
   let phone = "919825137814";
   let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
